@@ -1,0 +1,17 @@
+Homepage: Home
+Login: Login
+Remember: Remember me
+User: User
+Password: Password
+Send: Send
+Alert: Error !
+not_found:
+    page_title: Page Not Found
+    title: 404 Not found
+    content1: 'Sorry, but the page you were trying to view does not exist.'
+    content2: It looks like this was the result of either :
+    content3: a mistyped address
+    content4: an out-of-date link
+'Bad credentials': 'Bad credentials'
+'The presented password is invalid.': 'The presented password is invalid.'
+'The presented password cannot be empty.': 'The presented password cannot be empty.'

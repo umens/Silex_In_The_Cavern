@@ -1,0 +1,18 @@
+Homepage: Accueil
+Login: Connexion
+Remember: Se souvenir de moi
+User: Utilisateur
+Password: Mot de passe
+Send: Envoyer
+Alert: Erreur !
+BadLogin: "Informations d'identification incorrectes, veuillez recommencer."
+not_found:
+    page_title: Page introuvable
+    title: Page introuvable
+    content1: "Désolé, mais la page que vous tentez de voir n'existe pas."
+    content2: Cela peut venir de :
+    content3: une adresse mal écrite
+    content4: un lien périmé
+'Bad credentials': 'Mauvais identifiants'
+'The presented password is invalid.': 'Le mot de passe est invalide.'
+'The presented password cannot be empty.': 'le mot de passe ne peux pas être vide.'
