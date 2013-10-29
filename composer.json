@@ -1,4 +1,7 @@
 {
+    "name": "umens/silex_in_the_cavern",
+    "description": "A pre-configured skeleton for the Silex microframework with several improvement",
+    "type": "project",
     "minimum-stability": "dev",
     "require": {
         "silex/silex": "1.*",
