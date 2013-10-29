@@ -1,6 +1,8 @@
-vendor/
-cache/
-logs/
+/vendor/
+/app/cache/http/*
+/app/cache/twig/*
+/app/logs/*
+/web/uploads/*
 composer.phar
 composer.lock
 

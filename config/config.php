@@ -1,17 +1,30 @@
 <?php
 
 date_default_timezone_set("Europe/Paris");
+ini_set('display_errors', 0);
 
-// Local
-$app['locale'] = 'fr';
+// Load configuration file
+$ini_config = parse_ini_file(__DIR__.'/config.ini', TRUE);
+$config = $ini_config;
+
+// Others
+$app['app.name'] = $config['app.name'];
+$app['charset']  = $config['app.charset'];
+
+// Log
+$app['log.path'] = __DIR__ . '/../app/logs';
+
+// Language
+$app['translation.path'] = __DIR__ . '/../app/translations';
+$app['locale'] = $config['app.local'];
 $app['session.default_locale'] = $app['locale'];
 $app['translator.messages'] = array(
-    'fr' => __DIR__.'/locales/fr.yml',
-    'en' => __DIR__.'/locales/en.yml',
+    'fr' => $app['translation.path'] . '/fr.yml',
+    'en' => $app['translation.path'] . '/en.yml',
 );
 
 // Cache
-$app['cache.path'] = __DIR__ . '/../cache';
+$app['cache.path'] = __DIR__ . '/../app/cache';
 
 // Http cache
 $app['http_cache.cache_dir'] = $app['cache.path'] . '/http';
@@ -19,19 +32,18 @@ $app['http_cache.cache_dir'] = $app['cache.path'] . '/http';
 // Twig cache
 $app['twig.options.cache'] = $app['cache.path'] . '/twig';
 
-// database
+// Database
 $app['db.options'] = array(
-    'driver' => 'pdo_mysql',
-    'dbhost' => 'localhost',
-    'dbname' => 'controlStation',
-    'user' => 'root',
-    'password' => '',
-    'driverOptions' => array(1002 => 'SET NAMES utf8 COLLATE utf8_general_ci'),
-    //'path' => $app['cache.dir'].'/app.db', si sqlite
+    'driver'   => $config['db.driver'],
+    'dbhost'   => $config['db.host'],
+    'dbname'   => $config['db.dbname'],
+    'user'     => $config['db.user'],
+    'password' => $config['db.password'],
+    'driverOptions' => array(1002 => 'SET NAMES utf8 COLLATE utf8_general_ci'),    
 );
 
 
-//sécurité de l'application
+// Security
 $app['security.firewalls'] = array(
     'login' => array(
         'pattern' => '^/login$',
@@ -39,7 +51,7 @@ $app['security.firewalls'] = array(
     'secured' => array(
         'pattern' => '^.*$',
         'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
-        "remember_me" => array('key' => 'MySuperMegaGigaNewSecret', 'lifetime' => '31536000'),
+        "remember_me" => array('key' => $config['app.secret'], 'lifetime' => $config['app.lifetime']),
         'logout' => array('logout_path' => '/logout'),
         'users' => $app->share(function() use ($app) {
                 // La classe Providers\UserProvider est spécifique à l'application

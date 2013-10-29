@@ -10,7 +10,7 @@ class FrontController implements ControllerProviderInterface
 {
     public function connect(Application $app)
     {
-        // creates a new controller based on the default route
+        
         $controllers = $app['controllers_factory'];
 
         $controllers->get('/', function () use ($app) {
@@ -21,22 +21,12 @@ class FrontController implements ControllerProviderInterface
 
         })->bind('home');
 
-        $controllers->get('/monitoring', function () use ($app) {
 
-            return $app['twig']->render('monitoring.html.twig', array(
-
-            ));
-
-        })->bind('monitoring');
-
-        $controllers->get('/sites', function () use ($app) {
-
-            return $app['twig']->render('site.html.twig', array(
-
-            ));
-
-        })->bind('site');
-
+        /*
+         *
+         * Don't remove lines behind. it's for the firewall
+         *
+         */
         $controllers->get('/login', function (Request $request) use ($app) {
 
             $token = $app['security']->getToken();
@@ -47,32 +37,6 @@ class FrontController implements ControllerProviderInterface
             ));
 
         })->bind('login');
-
-        /*$controllers->get('/archives', function () use ($app) {
-            
-
-            $token = $app['security']->getToken();
-
-            if (null !== $token) {
-                $user = $token->getUser();
-            }
-            else{
-                $user = null;
-            }
-            echo "<pre>";
-            print_r($user);
-            echo "</pre>";
-            die();
-
-        })->bind('archives');
-
-        $controllers->get('/contact', function () use ($app) {
-
-            return $app['twig']->render('contact.html.twig', array(
-                'title' => "Contactez nous",
-            ));
-
-        })->bind('contact');*/
 
         $controllers->post('/login_check', function (Application $app) { })->bind('check_path');
 
