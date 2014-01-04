@@ -5,8 +5,8 @@ Silex_In_The_Cavern
 
 contain :
 
-1. bootstrap 3
-2. Font Awesome 4.0.1
+1. bootstrap 3.0.3
+2. Font Awesome 4.0.3
 3. html5boilerplate 4.2
 4. jQuery 2.0.3
 

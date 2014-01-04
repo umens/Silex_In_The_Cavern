@@ -51,7 +51,7 @@ $app['security.firewalls'] = array(
     'secured' => array(
         'pattern' => '^.*$',
         'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
-        "remember_me" => array('key' => $config['app.secret'], 'lifetime' => $config['app.lifetime']),
+        "remember_me" => array('key' => $config['app.secret'], 'lifetime' => $config['app.lifetime'], 'always_remember_me' => true),
         'logout' => array('logout_path' => '/logout'),
         'users' => $app->share(function() use ($app) {
                 // La classe Providers\UserProvider est spécifique à l'application
